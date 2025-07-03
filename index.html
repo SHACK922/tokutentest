@@ -62,6 +62,9 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             border: 1px solid #f0e6d2;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 20px;
         }
 
         .habit-card:hover {
@@ -101,7 +104,19 @@
             font-size: 1rem;
             color: #5d4037;
             line-height: 1.7;
-            margin-left: 40px;
+            margin-left: 0;
+        }
+
+        .habit-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .habit-content {
+            flex: 1;
         }
 
         .footer {
@@ -141,6 +156,8 @@
             .habit-card {
                 padding: 20px;
                 margin-bottom: 15px;
+                flex-direction: column;
+                text-align: center;
             }
 
             .habit-title {
@@ -151,6 +168,12 @@
                 font-size: 0.95rem;
                 margin-left: 0;
                 margin-top: 10px;
+            }
+
+            .habit-image {
+                width: 60px;
+                height: 60px;
+                margin-bottom: 10px;
             }
 
             .footer {
@@ -184,57 +207,72 @@
 
         <div class="content">
             <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">1</span>
-                    <span class="habit-emoji">🌞</span>
-                    <span>起床直後にカーテンを開ける</span>
-                </div>
-                <div class="habit-description">
-                    目覚めたら、まず最初にカーテンを開けましょう。朝の光が目に入ることで、眠りを誘うホルモンが止まり、脳に「活動開始！」のスイッチが入ります。
-                </div>
-            </div>
-
-            <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">2</span>
-                    <span class="habit-emoji">☀️</span>
-                    <span>20〜30分の日光浴</span>
-                </div>
-                <div class="habit-description">
-                    自然の光を浴びることで、体内時計が完璧にリセットされます。気分を上げる「セロトニン」が作られ、夜にはそれが「良い睡眠の素」に変わります。
+                <img src="images/02.png" alt="朝の習慣" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">1</span>
+                        <span class="habit-emoji">🌞</span>
+                        <span>起床直後にカーテンを開ける</span>
+                    </div>
+                    <div class="habit-description">
+                        目覚めたら、まず最初にカーテンを開けましょう。朝の光が目に入ることで、眠りを誘うホルモンが止まり、脳に「活動開始！」のスイッチが入ります。
+                    </div>
                 </div>
             </div>
 
             <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">3</span>
-                    <span class="habit-emoji">💧</span>
-                    <span>起床直後の水分補給</span>
-                </div>
-                <div class="habit-description">
-                    カラカラの体にコップ一杯の水を流し込みましょう。脳と内臓が目覚め、代謝がアップします。少量の塩やレモン汁を入れると吸収率がさらに高まります。
-                </div>
-            </div>
-
-            <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">4</span>
-                    <span class="habit-emoji">🏃‍♀️</span>
-                    <span>15分間の朝の運動</span>
-                </div>
-                <div class="habit-description">
-                    軽い運動で、脳を育てる栄養素（BDNF）が分泌されます。これによって、その日一日の集中力や記憶力が大きく向上します。
+                <img src="images/02.png" alt="日光浴" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">2</span>
+                        <span class="habit-emoji">☀️</span>
+                        <span>20〜30分の日光浴</span>
+                    </div>
+                    <div class="habit-description">
+                        自然の光を浴びることで、体内時計が完璧にリセットされます。気分を上げる「セロトニン」が作られ、夜にはそれが「良い睡眠の素」に変わります。
+                    </div>
                 </div>
             </div>
 
             <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">5</span>
-                    <span class="habit-emoji">🚿</span>
-                    <span>30秒からの冷水シャワー</span>
+                <img src="images/06.png" alt="水分補給" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">3</span>
+                        <span class="habit-emoji">💧</span>
+                        <span>起床直後の水分補給</span>
+                    </div>
+                    <div class="habit-description">
+                        カラカラの体にコップ一杯の水を流し込みましょう。脳と内臓が目覚め、代謝がアップします。少量の塩やレモン汁を入れると吸収率がさらに高まります。
+                    </div>
                 </div>
-                <div class="habit-description">
-                    温かいシャワーの最後に、30秒だけ冷たい水を浴びてみましょう。体がシャキッと目覚めるだけでなく、免疫力もアップして風邪をひきにくくなります。
+            </div>
+
+            <div class="habit-card">
+                <img src="images/08_3.png" alt="朝の運動" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">4</span>
+                        <span class="habit-emoji">🏃‍♀️</span>
+                        <span>15分間の朝の運動</span>
+                    </div>
+                    <div class="habit-description">
+                        軽い運動で、脳を育てる栄養素（BDNF）が分泌されます。これによって、その日一日の集中力や記憶力が大きく向上します。
+                    </div>
+                </div>
+            </div>
+
+            <div class="habit-card">
+                <img src="images/02.png" alt="冷水シャワー" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">5</span>
+                        <span class="habit-emoji">🚿</span>
+                        <span>30秒からの冷水シャワー</span>
+                    </div>
+                    <div class="habit-description">
+                        温かいシャワーの最後に、30秒だけ冷たい水を浴びてみましょう。体がシャキッと目覚めるだけでなく、免疫力もアップして風邪をひきにくくなります。
+                    </div>
                 </div>
             </div>
 
@@ -250,13 +288,16 @@
             </div>
 
             <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">7</span>
-                    <span class="habit-emoji">🎶</span>
-                    <span>ポジティブな音楽を聴く</span>
-                </div>
-                <div class="habit-description">
-                    お気に入りのアップテンポな曲を聴くと、脳からやる気物質（ドーパミン）が出ます。一日を前向きな気持ちでスタートさせるための、簡単な方法です。
+                <img src="images/02.png" alt="ポジティブな音楽" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">7</span>
+                        <span class="habit-emoji">🎶</span>
+                        <span>ポジティブな音楽を聴く</span>
+                    </div>
+                    <div class="habit-description">
+                        お気に入りのアップテンポな曲を聴くと、脳からやる気物質（ドーパミン）が出ます。一日を前向きな気持ちでスタートさせるための、簡単な方法です。
+                    </div>
                 </div>
             </div>
 
