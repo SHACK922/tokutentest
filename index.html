@@ -30,17 +30,48 @@
         }
 
         .header {
-            background: linear-gradient(135deg, #f5e6d3 0%, #e8d5c4 100%);
-            padding: 40px 30px;
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe4cc 50%, #ffd4a3 100%);
+            padding: 60px 40px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(180deg); }
         }
 
         .main-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #8b4513;
-            margin-bottom: 15px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            font-size: 3.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+            background-size: 300% 300%;
+            animation: gradientShift 4s ease infinite;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         .subtitle {
@@ -55,64 +86,122 @@
         }
 
         .habit-card {
-            background-color: #faf8f5;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            border: 1px solid #f0e6d2;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #faf9f7 100%);
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 4px 8px rgba(0, 0, 0, 0.05);
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .habit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #ffd89b 0%, #19547b 100%);
+            border-radius: 25px;
+            z-index: -1;
+            padding: 2px;
+            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            mask-composite: subtract;
         }
 
         .habit-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        .habit-card:hover::before {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
 
         .habit-number {
             display: inline-block;
-            background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
             color: white;
-            width: 30px;
-            height: 30px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             text-align: center;
-            line-height: 30px;
-            font-weight: 600;
-            font-size: 0.9rem;
-            margin-right: 10px;
+            line-height: 40px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-right: 15px;
+            box-shadow: 0 4px 8px rgba(238, 90, 36, 0.3);
+            position: relative;
+            z-index: 1;
+        }
+
+        .habit-number::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(135deg, #ff9ff3, #f368e0);
+            border-radius: 50%;
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .habit-card:hover .habit-number::before {
+            opacity: 1;
         }
 
         .habit-emoji {
-            font-size: 1.5rem;
-            margin-right: 10px;
+            font-size: 2rem;
+            margin-right: 15px;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+            transition: transform 0.3s ease;
+        }
+
+        .habit-card:hover .habit-emoji {
+            transform: scale(1.2) rotate(-10deg);
         }
 
         .habit-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #8b4513;
-            margin-bottom: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 15px;
             display: flex;
             align-items: center;
+            position: relative;
         }
 
         .habit-description {
-            font-size: 1rem;
-            color: #5d4037;
-            line-height: 1.7;
+            font-size: 1.1rem;
+            color: #34495e;
+            line-height: 1.8;
             margin-left: 0;
+            font-weight: 400;
         }
 
         .habit-image {
-            width: 80px;
-            height: 80px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
             object-fit: cover;
             flex-shrink: 0;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .habit-card:hover .habit-image {
+            transform: scale(1.1) rotate(5deg);
         }
 
         .habit-content {
@@ -207,7 +296,7 @@
 
         <div class="content">
             <div class="habit-card">
-                <img src="images/02.png" alt="朝の習慣" class="habit-image">
+                <img src="images/01.png" alt="朝の習慣" class="habit-image">
                 <div class="habit-content">
                     <div class="habit-title">
                         <span class="habit-number">1</span>
@@ -221,7 +310,7 @@
             </div>
 
             <div class="habit-card">
-                <img src="images/02.png" alt="日光浴" class="habit-image">
+                <img src="images/15.png" alt="日光浴" class="habit-image">
                 <div class="habit-content">
                     <div class="habit-title">
                         <span class="habit-number">2</span>
@@ -263,7 +352,7 @@
             </div>
 
             <div class="habit-card">
-                <img src="images/02.png" alt="冷水シャワー" class="habit-image">
+                <img src="images/18_1.png" alt="冷水シャワー" class="habit-image">
                 <div class="habit-content">
                     <div class="habit-title">
                         <span class="habit-number">5</span>
@@ -277,18 +366,21 @@
             </div>
 
             <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">6</span>
-                    <span class="habit-emoji">🍳</span>
-                    <span>高タンパク質の朝食（25g以上）</span>
-                </div>
-                <div class="habit-description">
-                    卵、ギリシャヨーグルト、魚、プロテインなどでタンパク質を摂りましょう。集中力ややる気の元になる脳内物質が作られ、筋肉も育ちます。
+                <img src="images/21.png" alt="高タンパク質の朝食" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">6</span>
+                        <span class="habit-emoji">🍳</span>
+                        <span>高タンパク質の朝食（25g以上）</span>
+                    </div>
+                    <div class="habit-description">
+                        卵、ギリシャヨーグルト、魚、プロテインなどでタンパク質を摂りましょう。集中力ややる気の元になる脳内物質が作られ、筋肉も育ちます。
+                    </div>
                 </div>
             </div>
 
             <div class="habit-card">
-                <img src="images/02.png" alt="ポジティブな音楽" class="habit-image">
+                <img src="images/09_2.png" alt="ポジティブな音楽" class="habit-image">
                 <div class="habit-content">
                     <div class="habit-title">
                         <span class="habit-number">7</span>
@@ -302,35 +394,44 @@
             </div>
 
             <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">8</span>
-                    <span class="habit-emoji">🧠</span>
-                    <span>重要な決断は起床1時間後に行う</span>
-                </div>
-                <div class="habit-description">
-                    脳の機能がピークに達し、最も冷静で的確な判断ができるゴールデンタイムです。進路や人間関係など、大事なことはこの時間に考えましょう。
-                </div>
-            </div>
-
-            <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">9</span>
-                    <span class="habit-emoji">✍️</span>
-                    <span>午前中に一番困難なタスクをやる</span>
-                </div>
-                <div class="habit-description">
-                    意志の力が最も強い午前中に、一番面倒な勉強や課題を片付けてしまいましょう。大きな達成感で、午後の活動にも勢いがつきます。
+                <img src="images/16_2.png" alt="重要な決断" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">8</span>
+                        <span class="habit-emoji">🧠</span>
+                        <span>重要な決断は起床1時間後に行う</span>
+                    </div>
+                    <div class="habit-description">
+                        脳の機能がピークに達し、最も冷静で的確な判断ができるゴールデンタイムです。進路や人間関係など、大事なことはこの時間に考えましょう。
+                    </div>
                 </div>
             </div>
 
             <div class="habit-card">
-                <div class="habit-title">
-                    <span class="habit-number">10</span>
-                    <span class="habit-emoji">🕺</span>
-                    <span>30分ごとに3分間、体を動かす</span>
+                <img src="images/03.png" alt="困難なタスク" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">9</span>
+                        <span class="habit-emoji">✍️</span>
+                        <span>午前中に一番困難なタスクをやる</span>
+                    </div>
+                    <div class="habit-description">
+                        意志の力が最も強い午前中に、一番面倒な勉強や課題を片付けてしまいましょう。大きな達成感で、午後の活動にも勢いがつきます。
+                    </div>
                 </div>
-                <div class="habit-description">
-                    長時間座りっぱなしだと、脳の血流が悪くなり、パフォーマンスが落ちます。30分に一度立ち上がって少し歩くだけで、集中力がリセットされます。
+            </div>
+
+            <div class="habit-card">
+                <img src="images/10_1.png" alt="体を動かす" class="habit-image">
+                <div class="habit-content">
+                    <div class="habit-title">
+                        <span class="habit-number">10</span>
+                        <span class="habit-emoji">🕺</span>
+                        <span>30分ごとに3分間、体を動かす</span>
+                    </div>
+                    <div class="habit-description">
+                        長時間座りっぱなしだと、脳の血流が悪くなり、パフォーマンスが落ちます。30分に一度立ち上がって少し歩くだけで、集中力がリセットされます。
+                    </div>
                 </div>
             </div>
         </div>
